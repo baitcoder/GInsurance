@@ -9,8 +9,8 @@ namespace GInsurance.Models
     {
         public Plan()
         {
-            Claims = new HashSet<Claim>();
-            PaymentTables = new HashSet<PaymentTable>();
+          //  Claims = new HashSet<Claim>();
+           // PaymentTables = new HashSet<PaymentTable>();
             PolicyTables = new HashSet<PolicyTable>();
         }
 
@@ -20,8 +20,8 @@ namespace GInsurance.Models
         public int? Amount { get; set; }
         public int? UserId { get; set; }
 
-        public virtual ICollection<Claim> Claims { get; set; }
-        public virtual ICollection<PaymentTable> PaymentTables { get; set; }
+       // public virtual ICollection<Claim> Claims { get; set; }
+        //public virtual ICollection<PaymentTable> PaymentTables { get; set; }
         public virtual ICollection<PolicyTable> PolicyTables { get; set; }
     }
 }

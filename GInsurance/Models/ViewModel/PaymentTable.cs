@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace GInsurance.Models
+namespace GInsurance.Models.ViewModel
 {
     public partial class PaymentTable
     {
@@ -12,7 +12,7 @@ namespace GInsurance.Models
         public int? PlanId { get; set; }
         public int? UserId { get; set; }
 
-        public virtual Plan Plan { get; set; }
-        public virtual User User { get; set; }
+        //public virtual Plan Plan { get; set; }
+        //public virtual User User { get; set; }
     }
 }

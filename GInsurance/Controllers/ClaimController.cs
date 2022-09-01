@@ -27,12 +27,13 @@ namespace GInsurance.Controllers
             return Ok(data);
         }
 
+
         [HttpPost]
         [Route("AddClaim")]
         public IActionResult AddClaim([FromBody] Claim claim)
         {
 
-            
+     
             var data = db.Users.Find(claim.UserId);
             if (data != null)
             {

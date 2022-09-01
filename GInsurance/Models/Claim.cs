@@ -12,12 +12,10 @@ namespace GInsurance.Models
         public string Reason { get; set; }
         public int Amount { get; set; }
         public bool ApproveStatus { get; set; }
-        public int? PlanId { get; set; }
         public int? UserId { get; set; }
-        public int? PolicyId { get; set; }
-
-        public virtual Plan Plan { get; set; }
-        public virtual PolicyTable Policy { get; set; }
+       
+        //public virtual Plan Plan { get; set; }
+        //public virtual PolicyTable Policy { get; set; }
         public virtual User User { get; set; }
     }
 }

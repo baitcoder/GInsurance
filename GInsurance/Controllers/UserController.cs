@@ -15,6 +15,7 @@ namespace GInsurance.Controllers
     public class UserController : ControllerBase
     {
         GInsuranceContext db = new GInsuranceContext();
+
         [HttpGet]
         [Route("GetUser/{id}")]
         public IActionResult GetUserId([FromRoute]int id)
@@ -24,12 +25,6 @@ namespace GInsurance.Controllers
         }
 
 
-/*        [HttpGet]
-        [Route("Userpage/{id}")]
-        public IActionResult Userdata([FromRoute] int id)
-        {
-           
-        }*/
 
 
         [HttpGet]
@@ -45,7 +40,6 @@ namespace GInsurance.Controllers
                     return Accepted($"UserID-{id}");
                 }   
                 
-                
             }
             catch(Exception e)
             {
@@ -55,13 +49,17 @@ namespace GInsurance.Controllers
         }
 
 
+
         [HttpGet]
         [Route("GetAll")]
         public IActionResult GetUsers()
         {
             var data = db.Users.AsQueryable();
+          
             return Ok(data);
         }
+
+
 
 
         [HttpPost]
@@ -86,37 +84,10 @@ namespace GInsurance.Controllers
 
             }
             return Ok(user.UserId);
-
         }
 
               
-        /*[HttpGet]
-        [Route("LoginCheck/{id}/{password}")]
-        public IActionResult UserLogi([FromRoute] int id, string password)
-        {
-            //var data = db.Users.Where(e => e.UserId == id).FirstOrDefault();
-            //return Ok(data);
-            bool T = false;
-            try
-            {
-                
-                var data = db.Users.Where(e => e.UserId == id).FirstOrDefault();
-                if (data != null)
-                {
-                    if ((data.UserId == id) && (data.Password == password))
-                    {
-                        T=true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-               // return JsonResult(false);
-            }
-            return Json(T);
-           // return NotFound("UserID not Found");
-        }
-*/
+
 
 
         [HttpGet]

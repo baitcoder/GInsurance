@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GInsurance.Models.ViewModel;
 
 #nullable disable
 
@@ -11,9 +12,9 @@ namespace GInsurance.Models
         {
             Claims = new HashSet<Claim>();
             Details = new HashSet<Detail>();
-            PaymentTables = new HashSet<PaymentTable>();
+           // PaymentTables = new HashSet<PaymentTable>();
             PolicyTables = new HashSet<PolicyTable>();
-            Renewals = new HashSet<Renewal>();
+          //  Renewals = new HashSet<Renewal>();
         }
 
         public int UserId { get; set; }
@@ -25,8 +26,8 @@ namespace GInsurance.Models
        
         public virtual ICollection<Claim> Claims { get; set; }
         public virtual ICollection<Detail> Details { get; set; }
-        public virtual ICollection<PaymentTable> PaymentTables { get; set; }
+       // public virtual ICollection<PaymentTable> PaymentTables { get; set; }
         public virtual ICollection<PolicyTable> PolicyTables { get; set; }
-        public virtual ICollection<Renewal> Renewals { get; set; }
+        //public virtual ICollection<Renewal> Renewals { get; set; }
     }
 }

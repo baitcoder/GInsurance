@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace GInsurance.Models
+namespace GInsurance.Models.ViewModel
 {
     public partial class Renewal
     {
@@ -11,7 +11,7 @@ namespace GInsurance.Models
         public int? UserId { get; set; }
         public int? PolicyId { get; set; }
 
-        public virtual PolicyTable Policy { get; set; }
-        public virtual User User { get; set; }
+        //public virtual PolicyTable Policy { get; set; }
+        //public virtual User User { get; set; }
     }
 }

@@ -19,10 +19,10 @@ namespace GInsurance.Models
 
         public virtual DbSet<Claim> Claims { get; set; }
         public virtual DbSet<Detail> Details { get; set; }
-        public virtual DbSet<PaymentTable> PaymentTables { get; set; }
+       // public virtual DbSet<PaymentTable> PaymentTables { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<PolicyTable> PolicyTables { get; set; }
-        public virtual DbSet<Renewal> Renewals { get; set; }
+        //public virtual DbSet<Renewal> Renewals { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -57,9 +57,9 @@ namespace GInsurance.Models
                     .HasColumnType("date")
                     .HasColumnName("Claim_Date");
 
-                entity.Property(e => e.PlanId).HasColumnName("Plan_Id");
+                //entity.Property(e => e.PlanId).HasColumnName("Plan_Id");
 
-                entity.Property(e => e.PolicyId).HasColumnName("Policy_Id");
+                //entity.Property(e => e.PolicyId).HasColumnName("Policy_Id");
 
                 entity.Property(e => e.Reason)
                     .IsRequired()
@@ -68,15 +68,15 @@ namespace GInsurance.Models
 
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
 
-                entity.HasOne(d => d.Plan)
-                    .WithMany(p => p.Claims)
-                    .HasForeignKey(d => d.PlanId)
-                    .HasConstraintName("FK__Claim__Plan_Id__619B8048");
+                //entity.HasOne(d => d.Plan)
+                //    .WithMany(p => p.Claims)
+                //    .HasForeignKey(d => d.PlanId)
+                //    .HasConstraintName("FK__Claim__Plan_Id__619B8048");
 
-                entity.HasOne(d => d.Policy)
-                    .WithMany(p => p.Claims)
-                    .HasForeignKey(d => d.PolicyId)
-                    .HasConstraintName("FK__Claim__Policy_Id__6383C8BA");
+                //entity.HasOne(d => d.Policy)
+                //    .WithMany(p => p.Claims)
+                //    .HasForeignKey(d => d.PolicyId)
+                //    .HasConstraintName("FK__Claim__Policy_Id__6383C8BA");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Claims)
@@ -139,33 +139,33 @@ namespace GInsurance.Models
                     .HasConstraintName("FK__Details__User_Id__38996AB5");
             });
 
-            modelBuilder.Entity<PaymentTable>(entity =>
-            {
-                entity.HasKey(e => e.PaymentId)
-                    .HasName("PK__Payment___DA6C7FC1BDB46E3F");
+            //modelBuilder.Entity<PaymentTable>(entity =>
+            //{
+            //    entity.HasKey(e => e.PaymentId)
+            //        .HasName("PK__Payment___DA6C7FC1BDB46E3F");
 
-                entity.ToTable("Payment_Table");
+            //    entity.ToTable("Payment_Table");
 
-                entity.Property(e => e.PaymentId).HasColumnName("Payment_Id");
+            //    entity.Property(e => e.PaymentId).HasColumnName("Payment_Id");
 
-                entity.Property(e => e.PaymentDate)
-                    .HasColumnType("date")
-                    .HasColumnName("Payment_Date");
+            //    entity.Property(e => e.PaymentDate)
+            //        .HasColumnType("date")
+            //        .HasColumnName("Payment_Date");
 
-                entity.Property(e => e.PlanId).HasColumnName("Plan_Id");
+            //    entity.Property(e => e.PlanId).HasColumnName("Plan_Id");
 
-                entity.Property(e => e.UserId).HasColumnName("User_Id");
+            //    entity.Property(e => e.UserId).HasColumnName("User_Id");
 
-                entity.HasOne(d => d.Plan)
-                    .WithMany(p => p.PaymentTables)
-                    .HasForeignKey(d => d.PlanId)
-                    .HasConstraintName("FK__Payment_T__Plan___3E52440B");
+            //    entity.HasOne(d => d.Plan)
+            //        .WithMany(p => p.PaymentTables)
+            ////        .HasForeignKey(d => d.PlanId)
+            //        .HasConstraintName("FK__Payment_T__Plan___3E52440B");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.PaymentTables)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Payment_T__User___3D5E1FD2");
-            });
+            //    entity.HasOne(d => d.User)
+            //        .WithMany(p => p.PaymentTables)
+            //        .HasForeignKey(d => d.UserId)
+            //        .HasConstraintName("FK__Payment_T__User___3D5E1FD2");
+            //});
 
             modelBuilder.Entity<Plan>(entity =>
             {
@@ -210,29 +210,29 @@ namespace GInsurance.Models
                     .HasConstraintName("FK__Policy_Ta__User___4222D4EF");
             });
 
-            modelBuilder.Entity<Renewal>(entity =>
-            {
-                entity.HasKey(e => e.RenewId)
-                    .HasName("PK__Renewal__17394C8E21EE2B30");
+            //modelBuilder.Entity<Renewal>(entity =>
+            //{
+            //    entity.HasKey(e => e.RenewId)
+            //        .HasName("PK__Renewal__17394C8E21EE2B30");
 
-                entity.ToTable("Renewal");
+            //    entity.ToTable("Renewal");
 
-                entity.Property(e => e.RenewId).HasColumnName("Renew_Id");
+            //    entity.Property(e => e.RenewId).HasColumnName("Renew_Id");
 
-                entity.Property(e => e.PolicyId).HasColumnName("Policy_Id");
+            //    entity.Property(e => e.PolicyId).HasColumnName("Policy_Id");
 
-                entity.Property(e => e.UserId).HasColumnName("User_Id");
+            //    entity.Property(e => e.UserId).HasColumnName("User_Id");
 
-                entity.HasOne(d => d.Policy)
-                    .WithMany(p => p.Renewals)
-                    .HasForeignKey(d => d.PolicyId)
-                    .HasConstraintName("FK__Renewal__Policy___6FE99F9F");
+            //    entity.HasOne(d => d.Policy)
+            //        .WithMany(p => p.Renewals)
+            //        .HasForeignKey(d => d.PolicyId)
+            //        .HasConstraintName("FK__Renewal__Policy___6FE99F9F");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Renewals)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Renewal__User_Id__6EF57B66");
-            });
+            //    entity.HasOne(d => d.User)
+            //        .WithMany(p => p.Renewals)
+            //        .HasForeignKey(d => d.UserId)
+            //        .HasConstraintName("FK__Renewal__User_Id__6EF57B66");
+            //});
 
             modelBuilder.Entity<User>(entity =>
             {

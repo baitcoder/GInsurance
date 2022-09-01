@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GInsurance.Models.ViewModel;
 
 #nullable disable
 
@@ -9,8 +10,8 @@ namespace GInsurance.Models
     {
         public PolicyTable()
         {
-            Claims = new HashSet<Claim>();
-            Renewals = new HashSet<Renewal>();
+           // Claims = new HashSet<Claim>();
+           // Renewals = new HashSet<Renewal>();
         }
 
         public int PolicyId { get; set; }
@@ -21,7 +22,7 @@ namespace GInsurance.Models
 
         public virtual Plan Plan { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<Claim> Claims { get; set; }
-        public virtual ICollection<Renewal> Renewals { get; set; }
+       // public virtual ICollection<Claim> Claims { get; set; }
+        //public virtual ICollection<Renewal> Renewals { get; set; }
     }
 }

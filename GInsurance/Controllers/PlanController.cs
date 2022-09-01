@@ -20,8 +20,12 @@ namespace GInsurance.Controllers
             return Ok(data);
         }
 
+
+
+
         [HttpPost]
         [Route("AddPlan")]
+        
         public IActionResult Post([FromBody] Plan plan)
         {
             try
