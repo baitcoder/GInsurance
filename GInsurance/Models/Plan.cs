@@ -16,8 +16,9 @@ namespace GInsurance.Models
 
         public int PlanId { get; set; }
         public string Type { get; set; }
-        public int? Duration { get; set; }
+        public int? Term { get; set; }
         public int? Amount { get; set; }
+        public int? UserId { get; set; }
 
         public virtual ICollection<Claim> Claims { get; set; }
         public virtual ICollection<PaymentTable> PaymentTables { get; set; }

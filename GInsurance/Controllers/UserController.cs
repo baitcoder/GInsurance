@@ -2,6 +2,11 @@
 using GInsurance.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using GInsurance.Models.ViewModel;
+using System.Collections.Generic;
+
 
 namespace GInsurance.Controllers
 {
@@ -18,6 +23,38 @@ namespace GInsurance.Controllers
             return Ok(data);
         }
 
+
+/*        [HttpGet]
+        [Route("Userpage/{id}")]
+        public IActionResult Userdata([FromRoute] int id)
+        {
+           
+        }*/
+
+
+        [HttpGet]
+        [Route("GetUserId/{email}")]
+        public IActionResult GetUserId([FromRoute]string email)
+        {
+            var data = db.Users.Where(e => e.Email == email).FirstOrDefault();
+            try
+            {
+                if (data != null)
+                {
+                    var id = data.UserId;
+                    return Accepted($"UserID-{id}");
+                }   
+                
+                
+            }
+            catch(Exception e)
+            {
+                //return NotFound($"Your UserID : {id}");
+            }
+            return Ok();
+        }
+
+
         [HttpGet]
         [Route("GetAll")]
         public IActionResult GetUsers()
@@ -28,7 +65,7 @@ namespace GInsurance.Controllers
 
 
         [HttpPost]
-        [Route("AddUser")]
+        [Route("Register")]
         public IActionResult AddUser([FromBody] User user)
         {
             
@@ -40,6 +77,7 @@ namespace GInsurance.Controllers
 
                     //db.Database.ExecuteSqlInterpolated($"AddToDept {dept.Id},{dept.Name},{dept.Location}");
                     db.SaveChanges();
+                    return Created("Your Id", user.UserId);
                 }
                 catch (Exception ex)
                 {
@@ -47,8 +85,62 @@ namespace GInsurance.Controllers
                 }
 
             }
-            return Created("User Added Successfully", user);
+            return Ok(user.UserId);
 
+        }
+
+              
+        /*[HttpGet]
+        [Route("LoginCheck/{id}/{password}")]
+        public IActionResult UserLogi([FromRoute] int id, string password)
+        {
+            //var data = db.Users.Where(e => e.UserId == id).FirstOrDefault();
+            //return Ok(data);
+            bool T = false;
+            try
+            {
+                
+                var data = db.Users.Where(e => e.UserId == id).FirstOrDefault();
+                if (data != null)
+                {
+                    if ((data.UserId == id) && (data.Password == password))
+                    {
+                        T=true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+               // return JsonResult(false);
+            }
+            return Json(T);
+           // return NotFound("UserID not Found");
+        }
+*/
+
+
+        [HttpGet]
+        [Route("Login/{id}/{password}")]
+        public IActionResult UserLogin([FromRoute]int id,string password)
+        {
+            //var data = db.Users.Where(e => e.UserId == id).FirstOrDefault();
+            //return Ok(data);
+            try
+            {
+                var data = db.Users.Where(e => e.UserId==id).FirstOrDefault();
+                if (data != null)
+                {
+                    if ((data.UserId == id) && (data.Password == password))
+                    {
+                        return Ok();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+            return NotFound("UserID not Found");
         }
 
 

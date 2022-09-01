@@ -86,23 +86,28 @@ namespace GInsurance.Models
 
             modelBuilder.Entity<Detail>(entity =>
             {
-                entity.Property(e => e.Address)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                //entity.Property(e => e.Address)
+                //    .IsRequired()
+                //    .HasMaxLength(50)
+                //    .IsUnicode(false);
 
-                entity.Property(e => e.ChassisNumber).HasColumnName("Chassis_Number");
+                entity.Property(e => e.ChassisNumber).
+                    HasColumnName("Chassis_Number")
+                .HasMaxLength(20).IsUnicode(false);
 
-                entity.Property(e => e.DrivingLicense)
+                entity.Property(e => e.License)
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("Driving_License");
 
-                entity.Property(e => e.EngineNumber).HasColumnName("Engine_Number");
+                entity.Property(e => e.EngineNumber)
+                    .HasColumnName("Engine_Number")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Manufacturer)
-                    .IsRequired()
+                entity.Property(e => e.ManufacturerName)
+                    .IsRequired().HasColumnName("Manufacturer")
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
@@ -115,15 +120,15 @@ namespace GInsurance.Models
                     .HasColumnType("date")
                     .HasColumnName("Purchase_Date");
 
-                entity.Property(e => e.RegNumber)
+                entity.Property(e => e.RegistrationNumber)
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("Reg_Number");
 
-                entity.Property(e => e.Type)
+                entity.Property(e => e.TypeOfVehicle)
                     .IsRequired()
-                    .HasMaxLength(20)
+                    .HasMaxLength(20).HasColumnName("Type")
                     .IsUnicode(false);
 
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
@@ -169,6 +174,8 @@ namespace GInsurance.Models
                 entity.Property(e => e.Type)
                     .HasMaxLength(20)
                     .IsUnicode(false);
+
+                entity.Property(e => e.UserId).HasColumnName("User_Id");
             });
 
             modelBuilder.Entity<PolicyTable>(entity =>
@@ -231,10 +238,11 @@ namespace GInsurance.Models
             {
                 entity.Property(e => e.UserId).HasColumnName("User_Id");
 
-                entity.Property(e => e.ConfirmPassword)
+                entity.Property(e => e.Contact)
                     .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .HasColumnName("Contact")
+                    .HasMaxLength(10).IsUnicode(false);
+                    
 
                 entity.Property(e => e.DateOfBirth)
                     .HasColumnType("date")

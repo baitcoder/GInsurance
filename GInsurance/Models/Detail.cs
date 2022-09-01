@@ -9,15 +9,15 @@ namespace GInsurance.Models
     {
         public int Id { get; set; }
         public int? UserId { get; set; }
-        public string Manufacturer { get; set; }
+        public string ManufacturerName { get; set; }
         public string Model { get; set; }
-        public string DrivingLicense { get; set; }
+        public string License { get; set; }
         public DateTime PurchaseDate { get; set; }
-        public string RegNumber { get; set; }
-        public int EngineNumber { get; set; }
-        public int ChassisNumber { get; set; }
-        public string Address { get; set; }
-        public string Type { get; set; }
+        public string RegistrationNumber { get; set; }
+        public string EngineNumber { get; set; }
+        public string ChassisNumber { get; set; }
+       // public string Address { get; set; }
+        public string TypeOfVehicle { get; set; }
 
         public virtual User User { get; set; }
     }
